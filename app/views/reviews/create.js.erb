@@ -19,21 +19,19 @@
 // reviewsBox = document.getElementById('reviews')
 // reviewsBox.insertAdjacentHTML('beforeend', myReview)
 
-// THIRD PART
-// NEED TO GET RID OF THE VALIDAITON ERRORS
-<% if @review.errors.any? %>
+// THIRD PARD: NEED TO GET RID OF THE VALIDAITON ERRORS
+<% if @review.persisted? %>
   // if my review works, i want to grab it and add it to the dom
-  myReview = '<%= j render "reviews/show", review: @review %>'
+  myReview = '<% j render "reviews/show", review: @review %>'
   reviewsBox = document.getElementById('reviews')
   reviewsBox.insertAdjacentHTML('beforeend', myReview)
   myForm = document.getElementById('new_review')
-  myForm.innerHTML = '<%= j render "reviews/form", restaurant: @restaurant, review: Review.new %>'
-  // I WANT TO PASS A NEW REVIEW WITHOUT THE VALIDATION.
+  // i want to refresh the form so i can add a new review at th end
+  myForm.innerHTML = '<% j render "reviews/form", restaurant: @restaurant, review: Review.new %>'
 <% else %>
-  // i want to refresh the form
+  // If my review does not pass the validations, I want to send the form with the validations errors
   myForm = document.getElementById('new_review')
-  myForm.innerHTML = '<%= j render "reviews/form", restaurant: @restaurant, review: @review %>'
-  // I WANT TO PASS THE REVIEW THAT WAS INPUT BY THE USER BUT NOT PASSING
+  myForm.innerHTML = '<% j render "reviews/form", restaurant: @restaurant, review: @review %>'
 <% end %>
 
 
