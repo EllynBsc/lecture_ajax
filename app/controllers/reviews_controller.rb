@@ -4,9 +4,17 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_strong_params)
     @review.restaurant = @restaurant
     if @review.save
-      redirect_to  restaurant_path(@restaurant)
+      # redirect_to  restaurant_path(@restaurant)
+      respond_to do |format|
+        format.html { redirect_to restaurant_path(@restaurant) } #if js not working respond with html
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      render 'restaurants/show'
+      # render 'restaurants/show'
+       respond_to do |format|
+        format.html { render 'restaurants/show' }
+        format.js  # <-- idem
+      end
     end
   end
 

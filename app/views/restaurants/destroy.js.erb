@@ -1,0 +1,5 @@
+// the js that will be executed in the browser
+// 1.I'm selecting the restaurant that i want to delete
+myRestaurantToDelete = document.querySelector("[data-restaurant-id='<%= @restaurant.id %>']")
+// 2. I delete the restaurant by calling the js function remove.
+myRestaurantToDelete.remove()

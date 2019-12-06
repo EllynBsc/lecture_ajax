@@ -17,4 +17,10 @@
 </div>
 
 
-<%= render 'reviews/form', mango: @restaurant, apple: @review %>
+<%= render 'reviews/form', restaurant: @restaurant, review: @review %>
+<!--
+render in that case is injecting the form simple_form_for to add a review passing the @restaurant from the action show in my restaurants controller andf the empty object review from show restaurants controller -->
+<%#= simple_form_for [mango, apple] do |f| %>
+<%#= f.input :content %>
+<%#= f.submit %>
+<%# end %>

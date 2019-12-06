@@ -4,6 +4,9 @@
 
 <ul>
   <% @restaurants.each do |restaurant| %>
-    <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
+    <li data-restaurant-id="<%= restaurant.id %>">
+      <%= link_to restaurant.name, restaurant_path(restaurant) %>
+      <%= link_to 'destroy', restaurant_path(restaurant), method: :delete,remote: true   %>
+    </li>
   <% end %>
 </ul>

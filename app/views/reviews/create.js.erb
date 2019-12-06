@@ -1,0 +1,61 @@
+// execute my js rendered in ajax is working and getting interpreted by the browser!
+
+
+// 1. Grab the value of the user input
+// myReview = document.getElementById('review_content').value
+// console.log(myReview)
+
+// 2. insert it into the DOM into my reviews box
+// reviewsBox = document.getElementById('reviews')
+// reviewsBox.insertAdjacentHTML('beforeend', myReview)
+
+
+// SECOND PART OF THE CODE: where we refacto with passing the partial of review
+// myReview = '<% j render "reviews/show", review: @review %>'
+// j stands for escaping javascript that might have been written in the partial of review show
+// console.log(myReview)
+
+// 2. insert it into the DOM into my reviews box
+// reviewsBox = document.getElementById('reviews')
+// reviewsBox.insertAdjacentHTML('beforeend', myReview)
+
+// THIRD PART
+// NEED TO GET RID OF THE VALIDAITON ERRORS
+<% if @review.persisted? %>
+  // if my review works, i want to grab it and add it to the dom
+  myReview = '<% j render "reviews/show", review: @review %>'
+  reviewsBox = document.getElementById('reviews')
+  reviewsBox.insertAdjacentHTML('beforeend', myReview)
+  myForm = document.getElementById('new_review')
+  myForm.innerHTML = '<% j render "reviews/form", restaurant: @restaurant, review: Review.new %>'
+  // I WANT TO PASS A NEW REVIEW WITHOUT THE VALIDATION.
+<% else %>
+  // i want to refresh the form
+  myForm = document.getElementById('new_review')
+  myForm.innerHTML = '<% j render "reviews/form", restaurant: @restaurant, review: @review %>'
+  // I WANT TO PASS THE REVIEW THAT WAS INPUT BY THE USER BUT NOT PASSING
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

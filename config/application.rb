@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module LectureAjax
   class Application < Rails::Application
+    config.action_view.embed_authenticity_token_in_remote_forms = true #please rails framework, allow my form to be sent thanks to the authenticity token principle
     config.generators do |generate|
           generate.assets false
           generate.helper false
